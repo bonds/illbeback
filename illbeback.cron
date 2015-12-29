@@ -1,0 +1,6 @@
+#!/usr/local/bin/fish
+
+# source ~/.ssh/environment
+# set PATH /home/scott/.pyenv/shims /home/scott/.pyenv/bin /usr/local/bin /usr/bin /sbin
+~/bin/illbeback
+
