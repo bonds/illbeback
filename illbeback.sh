@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+# vim: set filetype=python :
+
 # inspired by: http://blog.interlinked.org/tutorials/rsync_time_machine.html
+
 
 from subprocess import Popen, PIPE, DEVNULL
 from datetime import datetime
@@ -117,7 +120,7 @@ def main():
 
     backup_sources = config['source']
     if backup_sources.__class__ == str:
-        backup_sources = [backup_sources]
+        backup_sources = {'default': backup_sources}
     backup_destination = os.path.join(config['destination'], config['name'])
     dont_backup = config.get('exclude', [])
     name = config['name']
