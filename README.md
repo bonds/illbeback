@@ -1,12 +1,13 @@
-illbeback
-=========
-
-a time machine like backup script written in Python
-
 # Requirements
 
 * Python 3.x
+* rsync
 * pip install pyyaml
+
+# Installation
+
+* ````git clone https://github.com/bonds/illbeback /tmp/illbeback````
+* ````doas /tmp/illbeback/install.sh````
 
 # Usage
 
@@ -26,7 +27,7 @@ optional arguments:
 
 ## Example A: ~/.illbeback
 ````
-# vim: set filetype=yaml : #
+# vim: set filetype=yaml :
 
 name: laptop
 source: "~"
@@ -42,7 +43,7 @@ exclude:
 ## Example B: ~/.illbeback-photos
 
 ````
-# vim: set filetype=yaml : #
+# vim: set filetype=yaml :
 
 name: photos
 source:
