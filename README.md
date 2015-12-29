@@ -1,4 +1,4 @@
 illbeback
 =========
 
-a time machine like backup script written in Ruby
+a time machine like backup script written in Python
