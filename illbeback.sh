@@ -110,6 +110,12 @@ def main():
 
     os.nice(20)
 
+    command = 'route -n show -inet | grep default | head -1 | awk \'{print $8}\' | grep ppp'
+    proc = run_at_source(command)
+    if proc.returncode == 0:
+        print('warning: on a wwan connection, skipping backup')
+        sys.exit()
+
     ap = argparse.ArgumentParser(
         description='backup a directory with versioning, kinda like Apple\'s \
                      Time Machine, but based on rsync instead')
