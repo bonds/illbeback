@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.4
 # vim: set filetype=python :
 
 # inspired by: http://blog.interlinked.org/tutorials/rsync_time_machine.html
@@ -170,10 +170,20 @@ def main():
                 key)
         rsync_params = ["-azvP", "--delete", "--delete-excluded"]
         if not is_first_backup:
-            rsync_params.append("--link-dest=../current")
+            if len(backup_sources) == 1:
+                rsync_params.append("--link-dest=../current")
+            else:
+                rsync_params.append("--link-dest=../../current/{}".format(key))
         for item in dont_backup:
             rsync_params.append("--exclude \"{}\"".format(item))
         rsync_params.append("{} {}".format(source, destination))
+        newdir = backup_destination.split(':')[1]
+        command = "mkdir -p {}".format(newdir)
+        proc = run_at_destination(backup_destination, command)
+        if proc.returncode != 0:
+            print("Error: rc={} stdout={} command={}".format(
+                proc.returncode, proc.stdout.read(), command))
+            raise
         command = "rsync {} 2>&1".format(" ".join(rsync_params))
         proc = run_at_source(command)
         sum_of_returncodes += proc.returncode
