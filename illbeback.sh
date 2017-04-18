@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.4
+#!/usr/bin/env python3.6
 # vim: set filetype=python :
 
 # inspired by: http://blog.interlinked.org/tutorials/rsync_time_machine.html
